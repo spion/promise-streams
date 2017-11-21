@@ -101,12 +101,25 @@ process.stdin.pipe(split()).pipe(es.reduce(function(acc, el) {
 
 Wait for the stream to end. Also captures errors.
 
+
+#### ps.collect
+
+`(s: Stream) => Promise<Buffer | string>`
+
+Collects data from a stream into a single buffer or string, depending on the encoding of the passed stream.
+
 #### ps.pipe
 
 `(source: Stream, destination: Stream) => Promise`
 
 Pipes s1 to s2 and forwards all errors to the resulting promise. The promise is
 fulfilled without a value when the source stream ends.
+
+#### ps.pipeline
+
+`(source: Stream, ...streams: Stream[]) => Promise`
+
+Like pipe, but creates a pipeline of multiple streams.
 
 #### PromiseStream.prototype.push
 
