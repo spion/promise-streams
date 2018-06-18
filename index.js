@@ -239,7 +239,7 @@ function collect(s) {
     return pipe(s, maybeResume(exports.through(function(data) {
         acc.push(data);
     }))).then(function() {
-        if (!acc.length) return new Buffer();
+        if (!acc.length) return Buffer.alloc(0);
         else if (typeof acc[0] === 'string')
             return acc.join('');
         else
